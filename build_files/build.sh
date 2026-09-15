@@ -7,6 +7,36 @@ cp -avf "/ctx/system_files"/. /
 
 ### Install packages
 
+#1Password Setup and import
+
+# Import the 1Password GPG key
+rpm --import https://downloads.1password.com/linux/keys/1password.asc
+
+# Create the 1Password repository configuration file
+cat << 'EOF' > /etc/yum.repos.d/1password.repo
+[1password]
+name=1Password Stable Channel
+baseurl=https://downloads.1password.com/linux/rpm/stable/$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=https://downloads.1password.com/linux/keys/1password.asc
+EOF
+
+# Install 1Password and the 1Password CLI
+dnf5 install -y 1password
+
+#Install Ghostty from COPR
+dnf5 -y copr enable scottames/ghostty
+dnf5 -y install ghostty
+dnf5 -y copr disable scottames/ghostty
+
+#Install Flatpaks
+flatpak install -y flathub com.protonvpn.www
+flatpak install -y flathub com.microsoft.Edge
+flatpak install -y flathub org.prismlauncher.PrismLauncher
+flatpak install -y flathub com.ktechpit.whatsie
+
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # List of rpmfusion packages can be found here:
