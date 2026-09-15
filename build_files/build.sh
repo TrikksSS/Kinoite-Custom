@@ -31,12 +31,6 @@ dnf5 -y copr enable scottames/ghostty
 dnf5 -y install ghostty
 dnf5 -y copr disable scottames/ghostty
 
-#Install Flatpaks
-flatpak install -y flathub com.protonvpn.www
-flatpak install -y flathub com.microsoft.Edge
-flatpak install -y flathub org.prismlauncher.PrismLauncher
-flatpak install -y flathub com.ktechpit.whatsie
-
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # List of rpmfusion packages can be found here:
