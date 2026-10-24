@@ -34,14 +34,6 @@ dnf5 install -y 1password
     virt-install \
     && dnf5 clean all
 
-# Disable the monolithic daemon to prevent conflicts
-systemctl disable libvirtd.service
-
-# Enable the modern modular libvirt daemons instead
-systemctl enable virtqemud.service
-systemctl enable virtnetworkd.service
-systemctl enable virtnodedevd.service
-
 #Install Brave Origin
 dnf5 install -y dnf-plugins-core
 
