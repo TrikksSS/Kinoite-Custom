@@ -26,6 +26,17 @@ EOF
 # Install 1Password and the 1Password CLI
 dnf5 install -y 1password
 
+# Install QEMU, KVM, libvirt, and virt-manager
+ dnf5 install -y \
+    qemu-kvm \
+    libvirt \
+    virt-manager \
+    virt-install \
+    && dnf5 clean all
+
+# Enable the libvirtd service system-wide on boot
+systemctl enable libvirtd.service
+
 #Install Brave Origin
 dnf5 install -y dnf-plugins-core
 
